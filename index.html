@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antoniu's Construções | Projetos, Bancadas &amp; Reformas em Alagoinhas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            antoniusDark: '#141413',
+            antoniusSurface: '#1E1D1B',
+            antoniusStone: '#F4F1EA',
+            antoniusAmber: '#D97706',
+            antoniusBronze: '#92400E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-antoniusStone text-antoniusDark antialiased selection:bg-antoniusAmber selection:text-white">
+
+  <!-- Faixa discreta da Atlas Web -->
+  <div class="bg-antoniusDark text-stone-300 text-xs py-2 px-4 text-center border-b border-stone-800">
+    Proposta de apresentação digital feita pela <span class="text-amber-400 font-semibold">Atlas Web</span> • Alagoinhas - BA
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="sticky top-0 z-40 bg-antoniusDark/95 backdrop-blur border-b border-stone-800 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="#topo" class="flex items-center gap-3 min-w-0">
+        <img
+          src="logo-antonius.jpg"
+          alt="Antoniu's Construções"
+          onerror="this.style.display='none'; document.getElementById('logo-fallback-ac').classList.remove('hidden');"
+          class="w-10 h-10 rounded-full object-cover border border-amber-500/50 bg-white shrink-0"
+        />
+        <div id="logo-fallback-ac" class="hidden w-10 h-10 rounded-full bg-antoniusAmber text-antoniusDark font-display font-bold flex items-center justify-center shrink-0">
+          AC
+        </div>
+        <div class="truncate">
+          <span class="font-display font-bold text-white text-base sm:text-lg block leading-tight truncate">
+            Antoniu's Construções
+          </span>
+          <span class="text-[11px] text-stone-400 block truncate">
+            @aldairantonio_construcoes • Alagoinhas &amp; Região
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-stone-300">
+        <a href="#servicos" class="hover:text-amber-400 transition">Serviços</a>
+        <a href="#ambientes" class="hover:text-amber-400 transition">Ambientes</a>
+        <a href="#orcamento" class="hover:text-amber-400 transition">Orçamento</a>
+      </nav>
+
+      <button
+        type="button"
+        onclick="abrirOrcamento('Projeto / Reforma')"
+        class="bg-antoniusAmber hover:bg-amber-500 text-antoniusDark font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-lg transition shrink-0 cursor-pointer"
+      >
+        Pedir Orçamento
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="topo" class="bg-antoniusDark text-white pt-14 pb-20 sm:pt-20 sm:pb-24 border-b border-stone-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 space-y-5">
+        <div class="inline-flex items-center gap-2 bg-stone-900 border border-stone-700 text-amber-400 text-xs font-semibold px-3.5 py-1.5 rounded-full">
+          <span>Acabamento • Precisão • Execução</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl font-bold tracking-tight leading-[1.1]">
+          Transformamos ambientes em projetos exclusivos.
+        </h1>
+
+        <p class="text-stone-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+          Bancadas e pias esculpidas, nichos, revestimentos e reformas completas em <strong>Alagoinhas e região</strong>, com foco em alinhamento, estética e entrega caprichada.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <button
+            type="button"
+            onclick="abrirOrcamento('Bancadas & Pias Esculpidas')"
+            class="bg-antoniusAmber hover:bg-amber-500 text-antoniusDark font-semibold px-6 py-3.5 rounded-lg transition cursor-pointer"
+          >
+            Solicitar Orçamento no WhatsApp
+          </button>
+          <a
+            href="#ambientes"
+            class="bg-stone-900 hover:bg-stone-800 text-white font-semibold px-6 py-3.5 rounded-lg border border-stone-700 transition text-center"
+          >
+            Explorar Ambientes
+          </a>
+        </div>
+      </div>
+
+      <!-- Painel rápido de cotação -->
+      <div class="lg:col-span-5 bg-antoniusSurface border border-stone-800 rounded-2xl p-6 sm:p-7">
+        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">Cotação Direta</span>
+        <h2 class="font-display text-xl font-bold text-white mt-1 mb-4">Monte seu pedido de orçamento</h2>
+
+        <form onsubmit="enviarCotacaoDireta(event)" class="space-y-4">
+          <div>
+            <label for="cliente-nome" class="block text-xs font-medium text-stone-300 mb-1">Seu nome</label>
+            <input
+              id="cliente-nome"
+              type="text"
+              required
+              placeholder="Ex.: Aldair / Cliente"
+              class="w-full rounded-lg bg-antoniusDark border border-stone-700 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400"
+            />
+          </div>
+
+          <div>
+            <label for="tipo-servico" class="block text-xs font-medium text-stone-300 mb-1">Tipo de serviço</label>
+            <select
+              id="tipo-servico"
+              class="w-full rounded-lg bg-antoniusDark border border-stone-700 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400"
+            >
+              <option value="Bancadas e pias esculpidas">Bancadas e pias esculpidas</option>
+              <option value="Nichos e revestimentos">Nichos e revestimentos</option>
+              <option value="Banheiro / Área gourmet">Banheiro / Área gourmet</option>
+              <option value="Projetos e reformas">Projetos e reformas</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="detalhes-obra" class="block text-xs font-medium text-stone-300 mb-1">Medidas ou observação rápida</label>
+            <input
+              id="detalhes-obra"
+              type="text"
+              placeholder="Ex.: Cuba esculpida + nicho em Alagoinhas"
+              class="w-full rounded-lg bg-antoniusDark border border-stone-700 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-antoniusAmber hover:bg-amber-500 text-antoniusDark font-semibold py-3 rounded-lg text-sm transition cursor-pointer"
+          >
+            Enviar Detalhes no Instagram
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços principais -->
+  <section id="servicos" class="py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-antoniusBronze">Especialidades da Obra</span>
+        <h2 class="font-display text-2xl sm:text-4xl font-bold text-antoniusDark mt-1">
+          O que fazemos com mais destaque
+        </h2>
+        <p class="text-stone-600 mt-2 text-sm sm:text-base">
+          Soluções sob medida para valorizar cada detalhe da casa, da cozinha ou da área de lazer.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-stone-200">
+          <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">01 • Acabamento</span>
+          <h3 class="font-display text-xl font-bold text-antoniusDark mt-4">Bancadas &amp; Pias Esculpidas</h3>
+          <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+            Cortes precisos, caimento bem resolvido e visual limpo para banheiros, lavabos e cozinhas que pedem sofisticação.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-stone-200">
+          <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">02 • Detalhes</span>
+          <h3 class="font-display text-xl font-bold text-antoniusDark mt-4">Nichos &amp; Revestimentos</h3>
+          <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+            Aplicação alinhada de revestimentos e nichos embutidos que unem praticidade no dia a dia e acabamento refinado.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-stone-200">
+          <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">03 • Execução</span>
+          <h3 class="font-display text-xl font-bold text-antoniusDark mt-4">Projetos &amp; Reformas</h3>
+          <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+            Acompanhamento de reformas e melhorias residenciais em Alagoinhas e região com foco em entregar ambientes prontos para usar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtro interativo por ambiente -->
+  <section id="ambientes" class="py-16 bg-white border-y border-stone-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-antoniusBronze">Vitrine por Espaço</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-antoniusDark mt-1">
+            Ambientes em destaque
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap gap-2" id="filtros-ambientes">
+          <button type="button" data-filter="todos" class="filtro-btn bg-antoniusDark text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer">Todos</button>
+          <button type="button" data-filter="bancada" class="filtro-btn bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold px-4 py-2 rounded-full cursor-pointer">Bancadas</button>
+          <button type="button" data-filter="banheiro" class="filtro-btn bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold px-4 py-2 rounded-full cursor-pointer">Banheiro</button>
+          <button type="button" data-filter="gourmet" class="filtro-btn bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold px-4 py-2 rounded-full cursor-pointer">Área Gourmet</button>
+        </div>
+      </div>
+
+      <div id="grid-ambientes" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <article data-cat="bancada" class="card-ambiente bg-antoniusStone rounded-xl p-5 border border-stone-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase text-amber-800">Bancada</span>
+            <h3 class="font-display font-bold text-lg text-antoniusDark mt-1">Bancada &amp; Cuba Esculpida</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+              Acabamento clean com cuba integrada e linhas retas para valorizar o espaço.
+            </p>
+          </div>
+          <button type="button" onclick="abrirOrcamento('Bancada & Cuba Esculpida')" class="mt-5 text-xs font-bold text-antoniusBronze hover:underline text-left cursor-pointer">
+            Pedir orçamento deste estilo →
+          </button>
+        </article>
+
+        <article data-cat="bancada" class="card-ambiente bg-antoniusStone rounded-xl p-5 border border-stone-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase text-amber-800">Cozinha / Ilha</span>
+            <h3 class="font-display font-bold text-lg text-antoniusDark mt-1">Ilha de Casa &amp; Bancadas</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+              Superfícies pensadas para o uso diário com resistência e visual moderno.
+            </p>
+          </div>
+          <button type="button" onclick="abrirOrcamento('Ilha de Casa & Bancadas')" class="mt-5 text-xs font-bold text-antoniusBronze hover:underline text-left cursor-pointer">
+            Pedir orçamento deste estilo →
+          </button>
+        </article>
+
+        <article data-cat="banheiro" class="card-ambiente bg-antoniusStone rounded-xl p-5 border border-stone-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase text-amber-800">Banheiro</span>
+            <h3 class="font-display font-bold text-lg text-antoniusDark mt-1">Banheiro &amp; Nicho</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+              Pisos, paredes e nichos executados com atenção ao esquadro e ao visual final.
+            </p>
+          </div>
+          <button type="button" onclick="abrirOrcamento('Banheiro & Nicho')" class="mt-5 text-xs font-bold text-antoniusBronze hover:underline text-left cursor-pointer">
+            Pedir orçamento deste estilo →
+          </button>
+        </article>
+
+        <article data-cat="gourmet" class="card-ambiente bg-antoniusStone rounded-xl p-5 border border-stone-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase text-amber-800">Área Gourmet</span>
+            <h3 class="font-display font-bold text-lg text-antoniusDark mt-1">Espaço Gourmet &amp; Lazer</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+              Ambientes de convivência e confraternização com estrutura funcional e bem acabada.
+            </p>
+          </div>
+          <button type="button" onclick="abrirOrcamento('Área Gourmet & Lazer')" class="mt-5 text-xs font-bold text-antoniusBronze hover:underline text-left cursor-pointer">
+            Pedir orçamento deste estilo →
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chamada final -->
+  <section id="orcamento" class="py-14 bg-antoniusDark text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold">Vai construir ou reformar em Alagoinhas?</h2>
+        <p class="text-stone-300 text-sm mt-1">
+          Fale com <strong>Antoniu's Construções</strong> pelo Instagram e envie as medidas ou fotos do seu espaço.
+        </p>
+      </div>
+      <a
+        href="https://www.instagram.com/aldairantonio_construcoes/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-antoniusAmber hover:bg-amber-500 text-antoniusDark font-semibold px-6 py-3.5 rounded-lg text-sm transition shrink-0"
+      >
+        Chamar no Instagram (@aldairantonio_construcoes)
+      </a>
+    </div>
+  </section>
+
+  <footer class="bg-black text-stone-400 py-6 text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span>Antoniu's Construções • Alagoinhas - BA</span>
+      <span>Demonstração desenvolvida pela <strong class="text-amber-400">Atlas Web</strong></span>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal-orcamento" class="fixed inset-0 z-50 hidden bg-black/70 items-center justify-center p-4">
+    <div class="bg-white text-antoniusDark rounded-2xl max-w-md w-full p-6 shadow-2xl">
+      <div class="flex items-center justify-between mb-3">
+        <h3 id="modal-titulo-obra" class="font-display text-lg font-bold">Solicitar Orçamento</h3>
+        <button type="button" onclick="fecharOrcamento()" class="text-stone-400 hover:text-stone-700 text-xl leading-none cursor-pointer">&times;</button>
+      </div>
+      <p class="text-xs text-stone-600 mb-4">
+        Digite seu nome e iremos abrir o perfil oficial no Instagram para você enviar os detalhes do serviço.
+      </p>
+      <input
+        id="modal-nome-cliente"
+        type="text"
+        placeholder="Seu nome"
+        class="w-full rounded-lg border border-stone-300 px-3.5 py-2.5 text-sm mb-3 focus:outline-none focus:border-amber-600"
+      />
+      <button
+        id="modal-btn-ig"
+        type="button"
+        class="w-full bg-antoniusDark hover:bg-stone-800 text-white font-semibold py-3 rounded-lg text-sm transition cursor-pointer"
+      >
+        Ir para o Instagram da Loja
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const IG_URL = 'https://www.instagram.com/aldairantonio_construcoes/';
+    let servicoSelecionado = 'Projeto / Reforma';
+
+    document.querySelectorAll('.filtro-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filtro = btn.getAttribute('data-filter');
+        document.querySelectorAll('.filtro-btn').forEach(b => {
+          b.className = 'filtro-btn bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold px-4 py-2 rounded-full cursor-pointer';
+        });
+        btn.className = 'filtro-btn bg-antoniusDark text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer';
+
+        document.querySelectorAll('.card-ambiente').forEach(card => {
+          const cat = card.getAttribute('data-cat');
+          if (filtro === 'todos' || cat === filtro) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    function abrirOrcamento(servico) {
+      servicoSelecionado = servico;
+      document.getElementById('modal-titulo-obra').textContent = 'Orçamento • ' + servico;
+      document.getElementById('modal-nome-cliente').value = '';
+      const modal = document.getElementById('modal-orcamento');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function fecharOrcamento() {
+      const modal = document.getElementById('modal-orcamento');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.getElementById('modal-btn-ig').addEventListener('click', () => {
+      window.open(IG_URL, '_blank', 'noopener,noreferrer');
+      fecharOrcamento();
+    });
+
+    function enviarCotacaoDireta(e) {
+      e.preventDefault();
+      window.open(IG_URL, '_blank', 'noopener,noreferrer');
+    }
+  </script>
+</body>
+</html>
